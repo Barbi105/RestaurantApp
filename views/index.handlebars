@@ -1,10 +1,67 @@
 {{!-- * Setup the `index.handlebars` to have the template that Handlebars can render onto.
 
      * Create a button in `index.handlebars` that will submit the user input into the database. --}}
+<style>
+body{
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  font-weight: bold;
+  
+}
+.jumbotron{
+  background: #7F7FD5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#title{
+  text-align: center;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 70px;
+  font-weight:bold;
+  letter-spacing: -2px;
+}
+#instructions{
+  text-align: center;
+}
+.subTitle{
+  font-family: 'Oleo Script', cursive;
+  margin-top: 50px;
+}
+li{
 
-<h1 id="title">Restaurants tracker</h1>
+}
+ul{
+  list-style: none
+}
+#ateHereButton{
+ border:1px solid black;
+ margin-left:30px;
+ background: white;
+ transition: transform .2s;
+}
+#ateHereButton:hover {
+  transform: scale(1.25);
+}
+#newRestaurantText{
+width: 40%;
+}
+#addButton{
+ border:1px solid black;
+ margin-left:30px;
+ background: white;
+ transition: transform .2s;
+}
+#addButton:hover {
+  transform: scale(1.25);
+  font-weight: bolder;
+}
 
-<p>Interactive planner for all foodies! </p>
+}
+</style>
+<div class="jumbotron">
+<h1 id="title">Restaurant Tracker</h1>
+
+<p id="instructions">Interactive planner for all foodies! </p>
 <div class="row">
   <div class="col-md-6" id="wantToVisit">
     <h3 class="subTitle">Restaurants I want to visit:</h3>
@@ -43,9 +100,10 @@
   <form class="create-update-form" action="/burgers/create" method="POST">
 
     <div class="form-group">
-      <textarea id="new-burger-text" rows="4" name="burger_name"></textarea>
+      <textarea rows="1" name="burger_name" id="newRestaurantText"></textarea>
     </div>
 
-    <button type="submit" id="new-burger-submit">Add</button>
+    <button type="submit" id="addButton">Add restaurant</button>
   </form>
 </section>
+</div>
