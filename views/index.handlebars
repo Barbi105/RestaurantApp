@@ -2,56 +2,50 @@
 
      * Create a button in `index.handlebars` that will submit the user input into the database. --}}
 
-<div class="header-container">
-  <header>Restaurant</header>
-</div>
+<h1 id="title">Restaurants tracker</h1>
 
-<div class="row" id="burgersAvail">		
-		<div class="col-md-6">
-			<h3>Restaurants</h3>
-			<ul>
-				{{#each burger_data}}
-				{{#unless this.devoured}}	
-				<br>			
-				<li>
-					{{this.id}}. {{this.burger_name}}
-				</li>					
-				<form method="POST" action="/burgers/update?_method=PUT" class="button-size">
-					<input type="hidden" name="burger_id" type="text" value={{this.id}}>					
-					<button type="submit" class="btn btn-default">Devour it!</button>
-					<br>
-				</form>				
-				{{/unless}}
-				{{/each}}
-			</ul>		
-	</div>
-  <div>
-<div class="col-md-6" id="devoured">
-		<h3>Restaurants you have visited</h3>
-		<br>
-		<ul>
-		{{#each burger_data}}  {{#if this.devoured}}
-		<li>
-			<input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
-			</li>
-			{{/if}}
-		{{/each}}
-		</ul>
-	</div>	
-    <div>
-  </section>
-  <section id ="new-burger">
-    <form class="create-update-form" action="/burgers/create" method="POST">
-
-      <div class="form-group">
-        <textarea id="new-burger-text" rows="4" name="burger_name"></textarea>
-      </div>
-
-      <button type="submit" id="new-burger-submit">Submit</button>
-    </form>
-
-    <p>Add a Restaurant! Click the "Submit" button.</p>
-
-  </section>
+<p>Interactive planner for all foodies! </p>
+<div class="row">
+  <div class="col-md-6" id="wantToVisit">
+    <h3 class="subTitle">Restaurants I want to visit:</h3>
+    <ul>
+      {{#each burger_data}}
+      {{#unless this.devoured}}
+      <br>
+      <li>
+        <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+          <input type="hidden" name="burger_id" type="text" value={{this.id}}>
+          {{this.burger_name}}<button type="submit" class="btn btn-default" id="ateHereButton">Already ate here!</button>
+          <br>
+        </form>
+      </li>
+      {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-md-6" id="devoured">
+    <h3 class="subTitle">Restaurants I've been to:</h3>
+    <br>
+    <ul>
+      {{#each burger_data}} {{#if this.devoured}}
+      <li>
+        {{this.burger_name}}
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
   </div>
 </div>
+</section>
+
+<section id="newRestaurant">
+  <p> To add a restaurant click the "Add" button.</p>
+  <form class="create-update-form" action="/burgers/create" method="POST">
+
+    <div class="form-group">
+      <textarea id="new-burger-text" rows="4" name="burger_name"></textarea>
+    </div>
+
+    <button type="submit" id="new-burger-submit">Add</button>
+  </form>
+</section>
