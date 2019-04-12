@@ -4,9 +4,9 @@ CREATE DATABASE restaurant_db;
 
 USE restaurant_db;
 
-CREATE TABLE restaurant (
+CREATE TABLE burgers(
   id INT NOT NULL AUTO_INCREMENT,
-  resturant_name VARCHAR(150) NOT NULL,
+  burger_name VARCHAR(150) NOT NULL,
   devoured BOOLEAN,
   PRIMARY KEY (id)
 );
